@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCalculator, FaHelmetSafety, FaRoad, FaRulerCombined } from 'react-icons/fa6';
-import { MdOutlineEngineering } from 'react-icons/md';
+import { MdOutlineEngineering, MdDraw } from 'react-icons/md';
 
 const skills = [
   {
@@ -12,7 +12,7 @@ const skills = [
   },
   {
     name: 'AutoCAD & Draft Coordination',
-    icon: MdOutlineEngineering,
+    icon: MdDraw,
     level: 'Advanced',
     details: 'Construction drawings, revision control, and multidisciplinary coordination.',
   },
@@ -44,44 +44,60 @@ const skills = [
 
 const SkillSection = () => {
   return (
-    <section id="skills" className="py-24 lg:py-32">
-      <div className="section-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-24 lg:py-32 bg-transparent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.45 }}
-          className="text-center max-w-3xl mx-auto"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">Core Engineering Skills</h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
-            Technical strengths built through field execution, structural problem-solving, and design-driven delivery.
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight italic uppercase">
+            Technical <span className="text-amber-500">Competencies</span>
+          </h2>
+          <p className="mt-6 text-slate-400 text-lg font-medium italic">
+            Built through field execution, structural problem-solving, and design-driven delivery.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              whileHover={{ y: -6 }}
-              className="group section-card-dark p-6 rounded-2xl shadow-sm border hover:shadow-xl hover:border-blue-400/40 transition-all duration-300"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="group relative bg-[#111827]/40 backdrop-blur-xl p-8 rounded-2xl border border-slate-800/60 hover:border-amber-500/40 transition-all duration-500 shadow-xl shadow-black/10"
             >
-              <div className="h-12 w-12 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center">
-                <skill.icon size={24} />
+              {/* Icon Container with subtle glow */}
+              <div className="h-14 w-14 rounded-2xl bg-slate-900 border border-slate-800 text-amber-500 flex items-center justify-center group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-black transition-all duration-300 shadow-inner">
+                <skill.icon size={28} />
               </div>
 
-              <div className="mt-5">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-white leading-snug">{skill.name}</h3>
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 whitespace-nowrap">
+              <div className="mt-8">
+                <div className="flex flex-col gap-2">
+                  {/* Skill Level Badge */}
+                  <span className="w-fit text-[10px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-500 border border-amber-500/20">
                     {skill.level}
                   </span>
+                  <h3 className="text-xl font-bold text-white group-hover:text-amber-500 transition-colors duration-300">
+                    {skill.name}
+                  </h3>
                 </div>
-                <p className="mt-3 text-sm text-slate-300 leading-relaxed">{skill.details}</p>
+                
+                <p className="mt-4 text-sm text-slate-400 leading-relaxed font-light">
+                  {skill.details}
+                </p>
+              </div>
+
+              {/* Decorative corner element */}
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                 <div className="w-2 h-2 rounded-full bg-amber-500" />
               </div>
             </motion.div>
           ))}

@@ -18,76 +18,82 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-slate-700/70 bg-slate-950/75 backdrop-blur-xl shadow-[0_10px_40px_rgba(2,6,23,0.45)]">
+    <nav className="fixed top-0 w-full z-50 border-b border-slate-800/60 bg-[#0a0f1a]/80 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18 md:h-20">
-          <a href="#home" className="flex flex-col leading-none">
-            <span className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight">
+        <div className="flex justify-between items-center h-20 md:h-22">
+          
+          {/* Logo Area */}
+          <a href="#home" className="flex flex-col leading-none group">
+            <span className="text-xl sm:text-2xl font-black text-white tracking-tighter italic uppercase group-hover:text-amber-500 transition-colors duration-300">
               Engr. Abdur Rahman
-            </span>
-            <span className="mt-1 text-[11px] sm:text-xs font-medium uppercase tracking-[0.24em] text-blue-300/85">
-              Civil Engineer Portfolio
             </span>
           </a>
 
-          <div className="hidden lg:flex items-center gap-2 rounded-full border border-slate-700/80 bg-slate-900/65 px-3 py-2 text-sm font-semibold text-slate-300">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-1 rounded-full border border-slate-800/80 bg-slate-900/40 p-1.5 text-[13px] font-bold uppercase tracking-wider text-slate-400">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="rounded-full px-3 py-2 hover:bg-slate-800 hover:text-blue-300 transition-all duration-200"
+                className="rounded-full px-4 py-2 hover:bg-amber-500/10 hover:text-amber-500 transition-all duration-300"
               >
                 {item.label}
               </a>
             ))}
+            
+            {/* Download Resume Button */}
             <a
               href="#contact"
-              className="ml-2 inline-flex items-center gap-2 rounded-full bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 shadow-lg shadow-blue-950/30 transition"
+              className="ml-2 inline-flex items-center gap-2 rounded-full bg-amber-500 px-5 py-2.5 text-[12px] font-black uppercase tracking-widest text-black hover:bg-white transition-all duration-300 shadow-lg shadow-amber-500/10"
             >
-              <FaFileArrowDown size={13} />
-              Download Resume
+              <FaFileArrowDown size={14} />
+              Resume
             </a>
           </div>
 
+          {/* Mobile Menu Toggle */}
           <button
             type="button"
-            className="lg:hidden flex h-10 w-10 items-center justify-center rounded-md border border-slate-700 bg-slate-900/70 text-slate-200 hover:border-blue-500/50 hover:text-blue-300 transition"
+            className="lg:hidden flex h-11 w-11 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/80 text-amber-500 hover:border-amber-500/50 transition-all shadow-inner"
             onClick={() => setIsOpen((prev) => !prev)}
             aria-label="Toggle navigation menu"
           >
-            {isOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+            {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden border-t border-slate-800/80 bg-slate-950/95 px-4 pb-5 pt-3 backdrop-blur-xl"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden border-t border-slate-800/80 bg-[#0a0f1a]/95 backdrop-blur-3xl overflow-hidden"
           >
-            <div className="flex flex-col gap-1 rounded-2xl border border-slate-800 bg-slate-900/70 p-2 shadow-2xl shadow-black/30">
-              {navItems.map((item) => (
+            <div className="px-4 pb-8 pt-4">
+              <div className="flex flex-col gap-1 rounded-2xl border border-slate-800/60 bg-slate-900/40 p-2 shadow-2xl">
+                {navItems.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="rounded-xl px-4 py-3.5 text-sm font-bold uppercase tracking-widest text-slate-400 hover:bg-amber-500/10 hover:text-amber-500 transition-all"
+                  >
+                    {item.label}
+                  </a>
+                ))}
                 <a
-                  key={item.label}
-                  href={item.href}
+                  href="#contact"
                   onClick={() => setIsOpen(false)}
-                  className="rounded-xl px-3 py-2.5 font-medium text-slate-300 hover:bg-slate-800 hover:text-blue-300 transition"
+                  className="mt-4 inline-flex items-center justify-center gap-3 rounded-xl bg-amber-500 px-4 py-4 text-xs font-black uppercase tracking-[0.2em] text-black hover:bg-white transition-all"
                 >
-                  {item.label}
+                  <FaFileArrowDown size={15} />
+                  Download Resume
                 </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 font-semibold text-white hover:bg-blue-700 shadow-lg shadow-blue-950/30 transition"
-              >
-                <FaFileArrowDown size={13} />
-                Download Resume
-              </a>
+              </div>
             </div>
           </motion.div>
         )}

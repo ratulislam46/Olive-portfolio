@@ -1,94 +1,82 @@
 import React from 'react';
 import { motion } from "framer-motion";
-import { FaArrowRightLong, FaBuilding, FaHelmetSafety } from 'react-icons/fa6';
-import { MdOutlineEngineering } from 'react-icons/md';
+import { FaEye, FaBriefcase } from 'react-icons/fa6';
 
 const HeroSection = () => {
-
     return (
-        <section id="home" className="section-bg section-bg-carbon pattern-grid relative overflow-hidden bg-slate-950 text-white mt-14">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,#1d4ed8_0%,transparent_38%),radial-gradient(circle_at_85%_80%,#0f172a_0%,transparent_45%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,23,42,0.94),rgba(15,23,42,0.78))]" />
-            <div className="absolute inset-0 opacity-30 bg-[linear-gradient(to_right,rgba(148,163,184,0.09)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-size-[42px_42px]" />
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0f1a] pt-20">
+            
+            <div 
+                className="absolute inset-0 opacity-40 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url('https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=2070&auto=format&fit=crop')` }}
+            />
+            
+            <div className="absolute inset-0 bg-linear-to-b from-[#0a0f1a] via-transparent to-[#0a0f1a]" />
+            <div className="absolute inset-0 bg-black/40" />
 
-            <div className="section-content relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 lg:pt-34 lg:pb-24">
-                <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 lg:gap-14 items-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.55 }}
+            <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,rgba(148,163,184,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.1)_1px,transparent_1px)] bg-size-[40px_40px]" />
+
+            <div className="relative z-10 container mx-auto px-4 text-center">
+
+                {/* Main Heading - Brackets Style */}
+                <motion.h1 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="text-5xl md:text-7xl lg:text-9xl font-black text-white leading-none uppercase"
+                >
+                    <span className="text-white/90"></span>ENGR. ABDUR
+                    <br />
+                    <span className="text-amber-500">RAHMAN</span>
+                </motion.h1>
+
+                {/* Subtitle */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
+                >
+                    <p className="mt-6 text-slate-300 font-bold tracking-[0.4em] uppercase text-sm md:text-lg">
+                        Civil Engineer
+                    </p>
+                    <p className="mt-2 text-slate-400 font-medium tracking-wide text-xs md:text-base italic">
+                        Designing & Building the Infrastructure of Tomorrow
+                    </p>
+                </motion.div>
+
+                {/* Action Buttons */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8, duration: 0.5 }}
+                    className="mt-12 flex flex-wrap items-center justify-center gap-4"
+                >
+                    <a 
+                        href="#projects" 
+                        className="group flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-black font-black uppercase py-4 px-8 rounded-md transition-all duration-300 transform hover:scale-105"
                     >
-                        <span className="inline-flex items-center gap-2 rounded-full border border-blue-300/35 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold text-blue-100">
-                            <MdOutlineEngineering />
-                            Civil Engineer | Structural & Site Specialist
-                        </span>
-
-                        <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.12] tracking-tight">
-                            Designing Safe Structures, Delivering Reliable Projects
-                        </h1>
-
-                        <p className="mt-5 max-w-2xl text-base sm:text-lg text-slate-300 leading-relaxed">
-                            I help transform engineering concepts into durable, buildable results through
-                            structural accuracy, disciplined site execution, and practical project coordination.
-                        </p>
-
-                        <div className="mt-8 flex flex-wrap gap-3.5">
-                            <a
-                                href="#projects"
-                                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm sm:text-base font-semibold text-white hover:bg-blue-700 transition"
-                            >
-                                View Projects
-                                <FaArrowRightLong size={14} />
-                            </a>
-                            <a
-                                href="#about"
-                                className="inline-flex items-center gap-2 rounded-xl border border-slate-500/90 px-6 py-3 text-sm sm:text-base font-semibold text-slate-100 hover:bg-slate-800/70 transition"
-                            >
-                                About Me
-                            </a>
-                        </div>
-
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.55, delay: 0.08 }}
-                        className="rounded-2xl border border-slate-700/80 bg-slate-900/70 backdrop-blur-md p-6 sm:p-7"
+                        <FaEye className="group-hover:animate-pulse" />
+                        View My Projects
+                    </a>
+                    
+                    <a 
+                        href="#contact" 
+                        className="flex items-center gap-2 border-2 border-white/20 hover:border-white/50 bg-white/5 backdrop-blur-md text-white font-bold uppercase py-4 px-8 rounded-md transition-all duration-300"
                     >
-                        <h3 className="text-xl font-semibold text-white">Engineering Snapshot</h3>
+                        <FaBriefcase />
+                        Hire Me
+                    </a>
+                </motion.div>
 
-                        <div className="mt-5 grid grid-cols-2 gap-3.5">
-                            <div className="rounded-xl border border-slate-700 bg-slate-800/70 p-4">
-                                <p className="text-2xl font-bold text-blue-300">20+</p>
-                                <p className="mt-1 text-xs text-slate-300">Projects Contributed</p>
-                            </div>
-                            <div className="rounded-xl border border-slate-700 bg-slate-800/70 p-4">
-                                <p className="text-2xl font-bold text-blue-300">4+</p>
-                                <p className="mt-1 text-xs text-slate-300">Years Experience</p>
-                            </div>
-                        </div>
-
-                        <ul className="mt-6 space-y-3.5 text-slate-200">
-                            {[
-                                "RCC and steel design coordination",
-                                "Site quality control and inspection",
-                                "BOQ support and execution planning",
-                            ].map((item) => (
-                                <li key={item} className="flex items-start gap-3 text-sm sm:text-base">
-                                    <FaHelmetSafety className="text-blue-400 mt-1" size={13} />
-                                    <span>{item}</span>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/70 px-3 py-2 text-xs sm:text-sm text-slate-300">
-                            <FaBuilding className="text-blue-400" />
-                            Focus Areas: High-Rise, Roads, Industrial Foundations
-                        </div>
-                    </motion.div>
-                </div>
             </div>
+
+            {/* Background Typography - Subtle Large Text */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none overflow-hidden w-full">
+                <h2 className="text-[20vw] font-black text-white/2 leading-none text-center uppercase">
+                    Engineer
+                </h2>
+            </div>
+
         </section>
     );
 };

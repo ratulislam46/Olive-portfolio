@@ -7,6 +7,7 @@ import SkillSection from './SkillSection';
 import ExperienceSection from './ExperienceSection';
 import EducationSection from './EducationSection';
 import ContactSection from './ContactSection';
+import VideoSection from './VideoSection';
 
 const HomePage = () => {
     return (
@@ -20,6 +21,9 @@ const HomePage = () => {
             </div>
             <div>
                 <ProjectSection />
+            </div>
+            <div className='section-bg section-bg-charcoal pattern-diagonal'>
+                <VideoSection />
             </div>
             <div>
                 <ExperienceSection />

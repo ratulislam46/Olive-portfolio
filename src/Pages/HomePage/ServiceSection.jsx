@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaArrowRightLong, FaBuildingCircleCheck, FaHelmetSafety, FaRoadBridge, FaScrewdriverWrench } from 'react-icons/fa6';
+import { FaArrowRightLong, FaBuildingCircleCheck, FaHelmetSafety, FaRoadBridge, FaCheckDouble } from 'react-icons/fa6';
 
 const services = [
     {
@@ -25,55 +25,84 @@ const services = [
 
 const ServiceSection = () => {
     return (
-        <section id="services" className="py-24 lg:py-32">
-            <div className="section-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="services" className="py-24 lg:py-32 bg-transparent relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.45 }}
-                    className="text-center max-w-3xl mx-auto"
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center max-w-3xl mx-auto mb-16 lg:mb-20"
                 >
-                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/15 text-blue-200 border border-blue-400/20 text-sm font-semibold">
-                        <FaScrewdriverWrench size={13} />
-                        Professional Services
-                    </span>
-                    <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                        Core Engineering Services
+                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight italic uppercase">
+                        Core Engineering <span className="text-amber-500">Services</span>
                     </h2>
-                    <p className="mt-4 text-base sm:text-lg text-slate-300">
-                        Service areas where I deliver practical engineering outcomes with quality, safety, and coordination focus.
+                    <p className="mt-6 text-slate-400 text-lg font-medium italic leading-relaxed">
+                        Service areas where I deliver practical engineering outcomes with a primary focus on quality, safety, and coordination.
                     </p>
                 </motion.div>
 
-                <div className="mt-14 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-7">
+                {/* Services Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {services.map((service, index) => (
                         <motion.article
                             key={service.title}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            transition={{ duration: 0.4, delay: index * 0.08 }}
-                            whileHover={{ y: -6 }}
-                            className="section-card-dark rounded-2xl border p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-blue-400/40 transition-all duration-300"
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            whileHover={{ y: -8 }}
+                            className="group relative p-8 bg-[#111827]/40 backdrop-blur-xl rounded-2xl border border-slate-800/60 hover:border-amber-500/40 transition-all duration-500 shadow-2xl"
                         >
-                            <div className="h-12 w-12 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center">
-                                <service.icon size={22} />
-                            </div>
-                            <h3 className="mt-5 text-xl font-bold text-white">{service.title}</h3>
-                            <p className="mt-3 text-slate-300 leading-relaxed">{service.description}</p>
+                            {/* Icon Background Glow */}
+                            <div className="absolute -top-4 -right-4 h-24 w-24 bg-amber-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                            <ul className="mt-5 space-y-2.5 text-sm text-slate-300">
+                            {/* Service Icon */}
+                            <div className="h-14 w-14 rounded-xl bg-slate-900 border border-slate-800 text-amber-500 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-black transition-all duration-300 shadow-lg">
+                                <service.icon size={26} />
+                            </div>
+
+                            {/* Content */}
+                            <h3 className="mt-8 text-2xl font-bold text-white group-hover:text-amber-500 transition-colors duration-300">
+                                {service.title}
+                            </h3>
+                            
+                            <p className="mt-4 text-slate-400 leading-relaxed font-light text-sm">
+                                {service.description}
+                            </p>
+
+                            {/* Service Points */}
+                            <ul className="mt-8 space-y-4">
                                 {service.points.map((point) => (
-                                    <li key={point} className="flex items-start gap-2.5">
-                                        <FaArrowRightLong size={11} className="mt-1 text-blue-600" />
-                                        <span>{point}</span>
+                                    <li key={point} className="flex items-start gap-3 group/item">
+                                        <div className="mt-1 shrink-0 h-4 w-4 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
+                                            <FaCheckDouble size={8} className="text-amber-500" />
+                                        </div>
+                                        <span className="text-xs font-semibold text-slate-300 group-hover/item:text-slate-100 transition-colors">
+                                            {point}
+                                        </span>
                                     </li>
                                 ))}
                             </ul>
+
+                            {/* Decorative Line */}
+                            <div className="mt-8 pt-6 border-t border-slate-800/60 flex items-center justify-between">
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+                                    Quality Assured
+                                </span>
+                                <FaArrowRightLong className="text-amber-500/40 group-hover:text-amber-500 group-hover:translate-x-2 transition-all" />
+                            </div>
                         </motion.article>
                     ))}
                 </div>
+            </div>
+
+            {/* Background Decorative Element */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-[0.03]">
+                 <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500 rounded-full blur-[120px]" />
+                 <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-[120px]" />
             </div>
         </section>
     );

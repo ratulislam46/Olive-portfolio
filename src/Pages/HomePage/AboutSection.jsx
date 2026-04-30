@@ -1,67 +1,88 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCircleCheck, FaClipboardCheck, FaPeopleGroup } from 'react-icons/fa6';
+import { FaDownload, FaBriefcase, FaDiagramProject, FaAward, FaUsers } from 'react-icons/fa6';
 
-const strengths = [
-    'Structural detailing based on practical site conditions',
-    'Execution-focused planning with clear quality checkpoints',
-    'Strong communication across client, consultant, and contractor teams',
+const stats = [
+    { label: 'Years Experience', value: '10+', icon: FaBriefcase },
+    { label: 'Projects Completed', value: '150+', icon: FaDiagramProject },
+    { label: 'Certifications', value: '12', icon: FaAward },
+    { label: 'Happy Clients', value: '80+', icon: FaUsers },
 ];
 
 const AboutSection = () => {
     return (
-        <section id="about" className="py-24 lg:py-32">
-            <div className="section-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.45 }}
+        <section id="about" className="py-24 lg:py-32 bg-[#0a0f1a] overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    
+                    {/* Left Side: Image with Blueprint Frame */}
+                    <motion.div 
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="relative group"
                     >
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
-                            About Me
-                        </h2>
-                        <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed">
-                            I am a civil engineer focused on structural design support, site execution, and
-                            quality-driven delivery. My work combines technical accuracy with practical field
-                            decisions to ensure projects are safe, cost-effective, and completed on time.
-                        </p>
-                        <p className="mt-4 text-base text-slate-400 leading-relaxed">
-                            From high-rise buildings to infrastructure packages, I bring disciplined planning,
-                            site coordination, and continuous problem-solving to every stage of project delivery.
-                        </p>
+                        {/* Decorative Outer Border */}
+                        <div className="absolute -inset-4 border border-amber-500/20 translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500" />
+                        
+                        <div className="relative z-10 overflow-hidden border border-slate-800 bg-slate-900 aspect-4/5 sm:aspect-square lg:aspect-4/5">
+                            <img 
+                                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" 
+                                alt="Civil Engineer Professional" 
+                                className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                            />
+                            
+                            {/* Image Overlay Tag (Like the image provided) */}
+                            {/* <div className="absolute bottom-6 right-6 bg-slate-950/80 backdrop-blur-md border border-slate-700 p-3">
+                                <p className="text-[10px] font-black text-amber-500 tracking-[0.2em] uppercase leading-none">DWG: PORTFOLIO-001</p>
+                                <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase">Scale: 1:1</p>
+                            </div> */}
+                        </div>
                     </motion.div>
 
+                    {/* Right Side: Content */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.45, delay: 0.1 }}
-                        className="section-card-dark rounded-2xl border p-6 sm:p-7"
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
                     >
-                        <h3 className="text-xl font-semibold text-white">Professional Strengths</h3>
-                        <ul className="mt-5 space-y-3">
-                            {strengths.map((item) => (
-                                <li key={item} className="flex items-start gap-3 text-slate-300">
-                                    <FaCircleCheck className="text-blue-600 mt-1" size={13} />
-                                    <span>{item}</span>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="mt-6 grid grid-cols-2 gap-4">
-                            <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-4">
-                                <FaClipboardCheck className="text-blue-400" />
-                                <p className="mt-2 text-sm font-semibold text-slate-100">QA/QC Driven</p>
-                                <p className="mt-1 text-xs text-slate-400">Execution with documented quality checks</p>
-                            </div>
-                            <div className="rounded-xl border border-slate-700 bg-slate-900/70 p-4">
-                                <FaPeopleGroup className="text-blue-400" />
-                                <p className="mt-2 text-sm font-semibold text-slate-100">Team Coordination</p>
-                                <p className="mt-1 text-xs text-slate-400">Smooth communication across stakeholders</p>
-                            </div>
+                        <h2 className="text-4xl md:text-6xl font-black text-white leading-[1.1] tracking-tighter italic uppercase">
+                            STRUCTURAL <span className="text-amber-500">VISION,</span><br />
+                            PRECISE <span className="text-amber-500">EXECUTION</span>
+                        </h2>
+                        
+                        <div className="mt-8 space-y-6">
+                            <p className="text-slate-300 text-lg font-medium leading-relaxed italic border-l-2 border-amber-500 pl-6">
+                                A results-driven Civil Engineer with over a decade of experience in structural design, project management, and construction supervision. Specialized in reinforced concrete structures and modern building systems.
+                            </p>
+                            
+                            <p className="text-slate-400 text-base leading-relaxed font-light">
+                                From conceptual design to final handover, I bring technical expertise and hands-on leadership to every project. My approach combines traditional engineering principles with cutting-edge software tools to ensure optimal structural solutions.
+                            </p>
                         </div>
+
+                        {/* Stats Grid */}
+                        <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {stats.map((stat, i) => (
+                                <div key={i} className="p-4 bg-slate-900/40 border border-slate-800 hover:border-amber-500/50 transition-colors text-center group">
+                                    <stat.icon className="mx-auto text-amber-500/60 group-hover:text-amber-500 transition-colors mb-3" size={20} />
+                                    <h4 className="text-2xl font-black text-white leading-none">{stat.value}</h4>
+                                    <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-2">{stat.label}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Download CV Button */}
+                        <motion.button 
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            className="mt-12 inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black font-black text-[12px] uppercase tracking-[0.3em] transition-all duration-300"
+                        >
+                            <FaDownload size={14} />
+                            Download CV
+                        </motion.button>
                     </motion.div>
                 </div>
             </div>
